@@ -11,3 +11,12 @@ web-build/
 
 # macOS
 .DS_Store
+
+# vscode settings
+/.vscode
+
+# webstorm settings
+/.idea
+
+# misc
+/notes
