@@ -21,6 +21,8 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "description": "A marketplace for selling stuff you don't need anymore!",
+    "githubUrl": "https://github.com/TharindaNimnajith/DoneWithIt_ReactNativeApp.git"
   }
 }
