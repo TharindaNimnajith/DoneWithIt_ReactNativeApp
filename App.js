@@ -4,7 +4,9 @@ import {
   Alert,
   Button,
   Image,
+  Platform,
   SafeAreaView,
+  StatusBar,
   StyleSheet,
   Text,
   TouchableHighlight,
@@ -76,20 +78,24 @@ export default function App() {
     alert('Button Tapped')
   }
 
+  const containerStyle = {
+    backgroundColor: 'orange'
+  }
+
   return (
     // <View style={styles.container}>
     //   <Text>Open up App.js to start working on your app!</Text>
     //   <StatusBar style='auto'/>
     // </View>
     <SafeAreaView style={styles.container}>
-      <View style={styles.container}>
+      <View style={containerStyle}>
         <Text>1111111111111111</Text>
         <StatusBar style='auto'/>
       </View>
       <View style={styles.container}>
         <Text>22222222222222222222</Text>
       </View>
-      <View>
+      <View style={[styles.container, containerStyle]}>
         <Text>33333333333333333333333</Text>
       </View>
       <Text>
@@ -176,6 +182,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: 'dodgerblue',
     alignItems: 'center',
-    justifyContent: 'center'
+    justifyContent: 'center',
+    paddingTop: Platform.OS === 'android' ? StatusBar.currentHeight : 0
   }
 })
