@@ -1,11 +1,13 @@
-import {StatusBar} from 'expo-status-bar'
 import React from 'react'
+import {useDeviceOrientation, useDimensions} from '@react-native-community/hooks'
 import {
   Alert,
   Button,
+  Dimensions,
   Image,
   Platform,
   SafeAreaView,
+  ScrollView,
   StatusBar,
   StyleSheet,
   Text,
@@ -82,98 +84,187 @@ export default function App() {
     backgroundColor: 'orange'
   }
 
+  console.log(Dimensions.get('screen'))
+  console.log(Dimensions.get('window'))
+
+  console.log(useDimensions())
+  console.log(useDeviceOrientation())
+
+  const {landscape} = useDeviceOrientation()
+
   return (
     // <View style={styles.container}>
     //   <Text>Open up App.js to start working on your app!</Text>
     //   <StatusBar style='auto'/>
     // </View>
-    <SafeAreaView style={styles.container}>
-      <View style={containerStyle}>
-        <Text>1111111111111111</Text>
-        <StatusBar style='auto'/>
-      </View>
-      <View style={styles.container}>
-        <Text>22222222222222222222</Text>
-      </View>
-      <View style={[styles.container, containerStyle]}>
-        <Text>33333333333333333333333</Text>
-      </View>
-      <Text>
-        Open up App.js to start working on your app!
-      </Text>
-      <Text>
-        Open up App.js to start working on your app!
-        I am going to make this a very long text.
-        Now I am going to make this even longer to see what happens!
-      </Text>
-      <Text numberOfLines={1}>
-        Open up App.js to start working on your app!
-        I am going to make this a very long text.
-        Now I am going to make this even longer to see what happens!
-      </Text>
-      <Text numberOfLines={2}>
-        Open up App.js to start working on your app!
-        I am going to make this a very long text.
-        Now I am going to make this even longer to see what happens!
-      </Text>
-      <Text onPress={() => console.log('Text Pressed 1')}>
-        Open up App.js to start working on your app!
-      </Text>
-      <Text onPress={() => {
-        console.log('Text Pressed 2')
-      }}>
-        Open up App.js to start working on your app!
-      </Text>
-      <Text onPress={handlePressed}>
-        Open up App.js to start working on your app!
-      </Text>
-      <Image source={require('./assets/icon.png')}/>
-      <TouchableWithoutFeedback onPress={handleImagePressed1}>
-        <Image blurRadius={2}
-               fadeDuration={1000}
-               source={{
-                 width: 200,
-                 height: 100,
-                 uri: 'https://picsum.photos/200/100'
-               }}/>
-      </TouchableWithoutFeedback>
-      <TouchableOpacity onPress={handleImagePressed2}>
-        <Image blurRadius={0}
-               fadeDuration={1000}
-               source={{
-                 width: 100,
-                 height: 100,
-                 uri: 'https://picsum.photos/100'
-               }}/>
-      </TouchableOpacity>
-      <TouchableHighlight onPress={handleImagePressed3}>
-        <Image blurRadius={0}
-               fadeDuration={1000}
-               source={{
-                 width: 100,
-                 height: 100,
-                 uri: 'https://picsum.photos/100'
-               }}/>
-      </TouchableHighlight>
-      <TouchableNativeFeedback onPress={handleImagePressed4}>
-        <Image blurRadius={0}
-               fadeDuration={1000}
-               source={{
-                 width: 100,
-                 height: 100,
-                 uri: 'https://picsum.photos/100'
-               }}/>
-      </TouchableNativeFeedback>
+    // <View style={{
+    //   backgroundColor: 'white',
+    //   flex: 1,
+    //   flexDirection: 'row',
+    //   // flexDirection: 'row-reverse',
+    //   // flexDirection: 'column',
+    //   // flexDirection: 'column-reverse',
+    //   justifyContent: 'center',
+    //   // justifyContent: 'end',
+    //   // justifyContent: 'start',
+    //   // justifyContent: 'space-around',
+    //   // justifyContent: 'space-evenly',
+    //   // justifyContent: 'space-between',
+    //   // alignItems: 'baseline',
+    //   // alignItems: 'flex-end',
+    //   // alignItems: 'flex-start',
+    //   // alignItems: 'stretch',
+    //   alignItems: 'center'
+    // }}>
+    //   {/*<View style={{*/}
+    //   {/*  backgroundColor: 'blue',*/}
+    //   {/*  flex: 2*/}
+    //   {/*}}/>*/}
+    //   {/*<View style={{*/}
+    //   {/*  backgroundColor: 'gold',*/}
+    //   {/*  flex: 1*/}
+    //   {/*}}/>*/}
+    //   {/*<View style={{*/}
+    //   {/*  backgroundColor: 'tomato',*/}
+    //   {/*  flex: 1*/}
+    //   {/*}}/>*/}
+    //   <View style={{
+    //     backgroundColor: 'blue',
+    //     width: 100,
+    //     height: 100,
+    //     alignSelf: 'flex-start'
+    //   }}/>
+    //   <View style={{
+    //     backgroundColor: 'gold',
+    //     width: 100,
+    //     height: 200
+    //   }}/>
+    //   <View style={{
+    //     backgroundColor: 'tomato',
+    //     width: 100,
+    //     // height: 300
+    //     height: 300
+    //   }}/>
+    // </View>
+    <View style={{
+      backgroundColor: 'white',
+      flex: 1,
+      flexDirection: 'row',
+      justifyContent: 'center',
+      alignItems: 'center'
+    }}>
       <View style={{
-        width: 200,
-        height: 70,
-        backgroundColor: 'blue'
+        backgroundColor: 'blue',
+        width: 100,
+        height: 100
       }}/>
-      <Button onPress={handleButtonTapped}
-              title={'Click Me'}
-              color='orange'/>
-      <StatusBar style='auto'/>
-    </SafeAreaView>
+      <View style={{
+        backgroundColor: 'gold',
+        width: 100,
+        height: 100
+      }}/>
+      <View style={{
+        backgroundColor: 'tomato',
+        width: 100,
+        height: 100
+      }}/>
+    </View>
+    // <SafeAreaView style={styles.container}>
+    //   <ScrollView style={styles.scrollView}>
+    //     <View style={{
+    //       backgroundColor: 'red',
+    //       width: '100%',
+    //       height: landscape ? '100%' : '0%'
+    //     }}>
+    //       <Text>View</Text>
+    //     </View>
+    //     <View style={containerStyle}>
+    //       <Text>1111111111111111</Text>
+    //       <StatusBar style='auto'/>
+    //     </View>
+    //     <View style={styles.container}>
+    //       <Text>22222222222222222222</Text>
+    //     </View>
+    //     <View style={[styles.container, containerStyle]}>
+    //       <Text>33333333333333333333333</Text>
+    //     </View>
+    //     <Text>
+    //       Open up App.js to start working on your app!
+    //     </Text>
+    //     <Text>
+    //       Open up App.js to start working on your app!
+    //       I am going to make this a very long text.
+    //       Now I am going to make this even longer to see what happens!
+    //     </Text>
+    //     <Text numberOfLines={1}>
+    //       Open up App.js to start working on your app!
+    //       I am going to make this a very long text.
+    //       Now I am going to make this even longer to see what happens!
+    //     </Text>
+    //     <Text numberOfLines={2}>
+    //       Open up App.js to start working on your app!
+    //       I am going to make this a very long text.
+    //       Now I am going to make this even longer to see what happens!
+    //     </Text>
+    //     <Text onPress={() => console.log('Text Pressed 1')}>
+    //       Open up App.js to start working on your app!
+    //     </Text>
+    //     <Text onPress={() => {
+    //       console.log('Text Pressed 2')
+    //     }}>
+    //       Open up App.js to start working on your app!
+    //     </Text>
+    //     <Text onPress={handlePressed}>
+    //       Open up App.js to start working on your app!
+    //     </Text>
+    //     <Image source={require('./assets/icon.png')}/>
+    //     <TouchableWithoutFeedback onPress={handleImagePressed1}>
+    //       <Image blurRadius={2}
+    //              fadeDuration={1000}
+    //              source={{
+    //                width: 200,
+    //                height: 100,
+    //                uri: 'https://picsum.photos/200/100'
+    //              }}/>
+    //     </TouchableWithoutFeedback>
+    //     <TouchableOpacity onPress={handleImagePressed2}>
+    //       <Image blurRadius={0}
+    //              fadeDuration={1000}
+    //              source={{
+    //                width: 100,
+    //                height: 100,
+    //                uri: 'https://picsum.photos/100'
+    //              }}/>
+    //     </TouchableOpacity>
+    //     <TouchableHighlight onPress={handleImagePressed3}>
+    //       <Image blurRadius={0}
+    //              fadeDuration={1000}
+    //              source={{
+    //                width: 100,
+    //                height: 100,
+    //                uri: 'https://picsum.photos/100'
+    //              }}/>
+    //     </TouchableHighlight>
+    //     <TouchableNativeFeedback onPress={handleImagePressed4}>
+    //       <Image blurRadius={0}
+    //              fadeDuration={1000}
+    //              source={{
+    //                width: 100,
+    //                height: 100,
+    //                uri: 'https://picsum.photos/100'
+    //              }}/>
+    //     </TouchableNativeFeedback>
+    //     <View style={{
+    //       width: 200,
+    //       height: 70,
+    //       backgroundColor: 'blue'
+    //     }}/>
+    //     <Button onPress={handleButtonTapped}
+    //             title={'Click Me'}
+    //             color='orange'/>
+    //   </ScrollView>
+    //   <StatusBar style='auto'/>
+    // </SafeAreaView>
   )
 }
 
@@ -184,5 +275,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     paddingTop: Platform.OS === 'android' ? StatusBar.currentHeight : 0
+  },
+  scrollView: {
+    marginHorizontal: 20
   }
 })
