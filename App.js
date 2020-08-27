@@ -24,7 +24,7 @@ export default function App() {
   let x = 5
   console.log(x.toString())
 
-  console.log(require('./assets/icon.png'))
+  console.log(require('./app/assets/icon.png'))
 
   const handlePressed = () => {
     console.log('Text Pressed 3')
@@ -245,7 +245,7 @@ export default function App() {
         <Text onPress={handlePressed}>
           Open up App.js to start working on your app!
         </Text>
-        <Image source={require('./assets/icon.png')}/>
+        <Image source={require('./app/assets/icon.png')}/>
         <TouchableWithoutFeedback onPress={handleImagePressed1}>
           <Image blurRadius={2}
                  fadeDuration={1000}
